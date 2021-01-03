@@ -1,5 +1,6 @@
 <div id="reviews">
   <h3 class="product-section-title"><%= Spree.t(:reviews) %></h3>
+
   <% if SpreeReviews::Config[:include_unapproved_reviews] == false and @product.reviews.approved.count == 0 %>
     <p class="reviews-none"><%= Spree.t(:no_reviews_available) %></p>
   <% else %>
@@ -8,5 +9,10 @@
       <%= render 'spree/shared/review', review: review %>
     <% end %>
   <% end %>
-  <%= link_to Spree.t(:write_your_own_review), new_product_review_path(@product), class: 'btn btn-default', rel: 'nofollow' %>
+
+  <% if @product.reviews_count > 0 %>
+    <%= link_to Spree.t(:read_all_reviews), product_reviews_path(@product), class: 'btn btn-primary text-uppercase', rel: 'nofollow' %>
+  <% end %>
+
+  <%= link_to Spree.t(:write_your_own_review), new_product_review_path(@product), class: 'btn btn-primary text-uppercase', rel: 'nofollow' %>
 </div>

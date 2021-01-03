@@ -6,15 +6,15 @@ module Spree
     end
 
     def stars
-      avg_rating.try(:round) || 0
+      avg_rating.ceil
     end
 
     def recalculate_rating
       self[:reviews_count] = reviews.reload.approved.count
-      if reviews_count > 0
-        self[:avg_rating] = reviews.approved.sum(:rating).to_f / reviews_count
+      self[:avg_rating] = if reviews_count > 0
+        reviews.approved.sum(:rating).to_f / reviews_count
       else
-        self[:avg_rating] = 0
+        0
       end
       save
     end
