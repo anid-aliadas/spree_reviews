@@ -4,6 +4,7 @@
   --star-active-color: white;
   --star-default-bg-color: white;
   --star-active-bg-color: #3cbb91;
+  --fade-speed: 0.8s;
 }
 
 .star-box {
@@ -19,9 +20,17 @@
 .center-ratings {
   margin: auto;
   width: fit-content;
-  text-align: center;
   height: var(--star-box-size);
   display: flex;
+}
+
+body#product-details {
+  .center-ratings {
+    margin: 0;
+    width: fit-content;
+    height: var(--star-box-size);
+    display: flex;
+  }
 }
 
 .rate-area {
@@ -43,7 +52,7 @@
     color: var(--star-default-color);
     line-height: 1.8em;
     margin: 0 2px;
-    transition: all 0.8s ease;
+    transition: all var(--fade-speed) ease;
   }
 
   &:not(:checked) > label::before {

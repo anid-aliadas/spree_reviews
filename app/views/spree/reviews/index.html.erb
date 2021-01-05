@@ -3,6 +3,7 @@
     <div class="col">
       <h1><%= @product.name + " " + Spree.t(:reviews) %> </h1>
       <%= render 'spree/shared/rating', product: @product, review: 0 %>
+      <%= link_to Spree.t(:back_to) + " " +@product.name, product_path(@product), class: 'btn btn-outline-primary text-uppercase', rel: 'nofollow' %>
       <%= link_to Spree.t(:write_your_own_review), new_product_review_path(@product), class: 'btn btn-primary text-uppercase', rel: 'nofollow' %>
     </div>
   </div>

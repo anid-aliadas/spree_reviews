@@ -5,7 +5,7 @@ module Spree
     before_action :init_pagination, only: [:index]
 
     def index
-      @approved_reviews = Spree::Review.approved.where(product: @product).page(@pagination_page).per(@pagination_per_page)
+      @approved_reviews = Spree::Review.default_approval_filter.where(product: @product).page(@pagination_page).per(@pagination_per_page)
 
       @title = "#{@product.name} #{Spree.t(:reviews)}"
     end

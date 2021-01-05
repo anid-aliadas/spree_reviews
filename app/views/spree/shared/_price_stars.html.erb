@@ -1,0 +1,5 @@
+<% unless SpreeReviews::Config[:include_unapproved_reviews] == false and @product.reviews.approved.count == 0 %>
+    <%= render 'spree/shared/rating', product: @product, review: 0 %>
+    <%= link_to Spree.t(:read_reviews), product_reviews_path(@product), class: 'btn btn-sm btn-outline-primary my-2', rel: 'nofollow' %>
+<% end %>
+

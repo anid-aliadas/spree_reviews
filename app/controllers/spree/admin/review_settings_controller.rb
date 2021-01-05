@@ -1,7 +1,6 @@
 module Spree
   module Admin
     class ReviewSettingsController < ResourceController
-
       def update
         settings = SpreeReviews::Configuration.new
 

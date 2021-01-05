@@ -1,4 +1,5 @@
 <%= render 'spree/feedback_reviews/summary', review: review %>
+
 <%= form_for (@feedback_review ||= review.feedback_reviews.build), url: feedback_reviews_path(review), method: :post, remote: true do |f| %>
   <% unless @feedback_review.errors.empty? %>
     <div class="error"><%= @feedback_review.errors[:rating] %></div>

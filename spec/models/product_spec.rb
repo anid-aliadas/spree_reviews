@@ -11,7 +11,7 @@ RSpec.describe Spree::Product, type: :model do
       expect(product.stars).to be(4)
 
       allow(product).to receive(:avg_rating).and_return(2.3)
-      expect(product.stars).to be(2)
+      expect(product.stars).to be(3)
     end
 
     it 'handles a nil value' do
